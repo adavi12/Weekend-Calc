@@ -5,7 +5,7 @@ var totalSalary = 0;
 var annualSalary = 0;
 var monthlySalary = annualSalary/12;
 
-$( document ).ready( function(){
+$( document).ready( function(){
   console.log('JQ');
   $('#btn').on('click',function(){
 
@@ -24,15 +24,19 @@ $( document ).ready( function(){
 
     for( var i = 0; i < employee.length; i++){
       console.log( Number(employee[i].annualSalary ));
-      annualSalary += Number(employee[i].annualSalary);
+      var monthlySalaryCost = (annualSalary += Number(employee[i].annualSalary)/12);
+      $('#outputDiv').append(  "<div id = 'monthlySalary'>Monthly Salary Cost:"+monthlySalaryCost.toLocaleString('en-US', { style: 'currency', currency: 'USD' })+"</div>");
     }
 
-    console.log("Total Salary:", annualSalary);
+    console.log("Monthly Salary Cost:", monthlySalary);
+
+
 
     //display employee
-    $('#outputDiv').append(newEmployee.firstName + " " + newEmployee.lastName + " " );
+    $('#outputDiv').append (newEmployee.firstName + " " + newEmployee.lastName + " " );
     $('#outputDiv').append(newEmployee.jobTitle + " " + newEmployee.idNumber + " ");
     $('#outputDiv').append(newEmployee.annualSalary);
+
 
     $('#fName').val('');
     $('#lName').val('');
